@@ -6,25 +6,28 @@ const initialState = {
   error: null
 }
 
-export const reducer = (state=initialState, action) => {
+export const reducer = (state = initialState, action) => {
   if (action.type === FETCH_CHEESES_REQUEST) {
-		Object.assign({}, state, {
+		return Object.assign({}, state, {
 			loading: true,
 		})
 	}
 
-	if (action.type === FETCH_CHEESES_SUCCESS) {
-		Object.assign({}, state, {
+	else if (action.type === FETCH_CHEESES_SUCCESS) {
+		return Object.assign({}, state, {
 			cheeses: action.cheeses,
 			loading: false,
 			error: null
 		})
 	}
 
-	if (action.type === FETCH_CHEESES_ERROR) {
-		Object.assign({}, state, {
+	else if (action.type === FETCH_CHEESES_ERROR) {
+		return Object.assign({}, state, {
 			loading: false,
 			error: action.error
 		})
+	}
+	else {
+		return state;
 	}
 }

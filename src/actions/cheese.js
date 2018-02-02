@@ -22,11 +22,11 @@ export const fetchCheeses = () => dispatch => {
 			if (!res.ok) {
 				return Promise.reject('Something has gone wrong');
 			}
-			return res.json
+			return res.json()
 		})
-		.then(cheeses => 
+		.then(cheeses => {
 			dispatch(fetchCheesesSuccess(cheeses))
-		)
+		})
 		.catch(err => 
 			dispatch(fetchCheesesError(err))
 		)
